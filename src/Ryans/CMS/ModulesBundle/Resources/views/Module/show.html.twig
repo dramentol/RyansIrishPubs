@@ -1,0 +1,53 @@
+<h1>Module</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>                <td>{{ entity.id }}</td>        </tr>
+        <tr>
+            <th>Title</th>                <td>{{ entity.title }}</td>        </tr>
+        <tr>
+            <th>Text</th>                <td>{{ entity.text }}</td>        </tr>
+        <tr>
+            <th>Image</th>                <td>{{ entity.image }}</td>        </tr>
+        <tr>
+            <th>Alt</th>                <td>{{ entity.alt }}</td>        </tr>
+        <tr>
+            <th>Active</th>                <td>{{ entity.active }}</td>        </tr>
+        <tr>
+            <th>Location</th>                <td>{{ entity.location }}</td>        </tr>
+        <tr>
+            <th>Start_date</th>                <td>{{ entity.startdate|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>End_date</th>                <td>{{ entity.enddate|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Border_color</th>                <td>{{ entity.bordercolor }}</td>        </tr>
+        <tr>
+            <th>Link</th>                <td>{{ entity.link }}</td>        </tr>
+        <tr>
+            <th>Ltitle</th>                <td>{{ entity.ltitle }}</td>        </tr>
+        <tr>
+            <th>Order</th>                <td>{{ entity.order }}</td>        </tr>
+        <tr>
+            <th>Blank</th>                <td>{{ entity.blank }}</td>        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('modules') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('modules_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('modules_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

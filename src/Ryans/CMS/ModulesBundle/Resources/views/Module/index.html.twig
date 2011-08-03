@@ -1,0 +1,106 @@
+{% block head %}
+	{% block title %}Modulos Laterales{% endblock %}
+	<style type="text/css" title="currentStyle">
+		@import "/js/DataTables/media/css/demo_page.css";
+		@import "/js/DataTables/media/css/demo_table_jui.css";
+		@import "/js/jquery-ui-1.8.14.custom/css/smoothness/jquery-ui-1.8.14.custom.css";
+		
+		.dataTables_wrapper {
+			width: 1640px;
+		}
+	</style>
+	<script type="text/javascript" src="/js/DataTables/media/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/DataTables/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$('#example').dataTable({
+			"bJQueryUI": true,
+			"sPaginationType": "full_numbers",
+			"aoColumns": [ 
+			  			/* Id */   {"bSearchable":false,"bVisible":false},
+			  			/* Titulo */  null,
+			  			/* Texto */ {"bSearchable":false,"bVisible":false},
+			  			/* Imagen */ null,
+			  			/* Alt */ {"bSearchable":false,"bVisible":false},
+			  			/* Activo */ null,
+			  			/* Ubicacion */ null,
+			  			/* Inicio */  null,
+			  			/* Fin */  null,
+			  			/* Colorbore */ {"bSearchable":false,"bVisible":false },
+			  			/* Link */ null,
+			  			/* Ltitle */ {"bSearchable":false,"bVisible":false },
+			  			/* Orden */ {"bSearchable":false,"bVisible":false },
+			  			/* Blank */ {"bSearchable":false,"bVisible":false },
+			  			/* Actions */ null
+			  		]
+		});
+	});
+	
+	</script>
+	
+{% endblock %}
+
+
+
+<h1>Module list</h1>
+
+<table class="records_list display" id="example" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Image</th>
+            <th>Alt</th>
+            <th>Active</th>
+            <th>Location</th>
+            <th>Start_date</th>
+            <th>End_date</th>
+            <th>Border_color</th>
+            <th>Link</th>
+            <th>Ltitle</th>
+            <th>Order</th>
+            <th>Blank</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('modules_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.title }}</td>
+            <td>{{ entity.text }}</td>
+            <td>{{ entity.image }}</td>
+            <td>{{ entity.alt }}</td>
+            <td>{{ entity.active }}</td>
+            <td>{{ entity.location }}</td>
+            <td>{{ entity.startdate|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.enddate|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.bordercolor }}</td>
+            <td>{{ entity.link }}</td>
+            <td>{{ entity.ltitle }}</td>
+            <td>{{ entity.order }}</td>
+            <td>{{ entity.blank }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('modules_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('modules_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('modules_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
